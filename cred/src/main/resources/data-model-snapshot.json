@@ -1,0 +1,221 @@
+{
+  "snapshot": {
+    "created": "2026-05-31T22:12:37.366",
+    "database": {
+      "productVersion": "2026.1.1",
+      "shortName": "intellijPsiClass",
+      "majorVersion": "0",
+      "minorVersion": "0",
+      "user": "luizg",
+      "productName": "IDEA Data Grid Snapshot",
+      "url": "jpab?generationContext=eae788ac-e6a0-4ce2-989d-2144849d22dd"
+    },
+    "metadata": {
+      "generationContext": {
+        "dbmsType": "h2"
+      }
+    },
+    "objects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "default": true,
+            "name": "JPA_BUDDY",
+            "snapshotId": "b3dc100"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Column": [
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "birth_date",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc109",
+            "type": {
+              "typeName": "DATE"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "children",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc110",
+            "type": {
+              "typeName": "INT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "cpf",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc104",
+            "type": {
+              "columnSize": "11!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc106",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "income",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc108",
+            "type": {
+              "typeName": "DOUBLE"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "name",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#b3dc102",
+            "snapshotId": "b3dc107",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Index": [
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_tb_client",
+            "snapshotId": "b3dc105",
+            "table": "liquibase.structure.core.Table#b3dc102",
+            "unique": true
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.PrimaryKey": [
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#b3dc105",
+            "columns": [
+              "liquibase.structure.core.Column#b3dc106"
+            ]
+            ,
+            "name": "pk_tb_client",
+            "snapshotId": "b3dc111",
+            "table": "liquibase.structure.core.Table#b3dc102"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#b3dc100",
+            "default": true,
+            "name": "PUBLIC",
+            "snapshotId": "b3dc101"
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#b3dc106",
+              "liquibase.structure.core.Column#b3dc107",
+              "liquibase.structure.core.Column#b3dc104",
+              "liquibase.structure.core.Column#b3dc108",
+              "liquibase.structure.core.Column#b3dc109",
+              "liquibase.structure.core.Column#b3dc110"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#b3dc105"
+            ]
+            ,
+            "name": "tb_client",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#b3dc111",
+            "schema": "liquibase.structure.core.Schema#b3dc101",
+            "snapshotId": "b3dc102",
+            "uniqueConstraints": [
+              "liquibase.structure.core.UniqueConstraint#b3dc103"
+            ]
+            
+          }
+        }
+      ]
+      ,
+      "liquibase.structure.core.UniqueConstraint": [
+        {
+          "uniqueConstraint": {
+            "clustered": false,
+            "columns": [
+              "liquibase.structure.core.Column#b3dc104"
+            ]
+            ,
+            "deferrable": false,
+            "disabled": false,
+            "initiallyDeferred": false,
+            "name": "uc_tb_client_cpf",
+            "snapshotId": "b3dc103",
+            "table": "liquibase.structure.core.Table#b3dc102",
+            "validate": true
+          }
+        }
+      ]
+      
+    },
+    "snapshotControl": {
+      "snapshotControl": {
+        "includedType": [
+          "liquibase.structure.core.Catalog",
+          "liquibase.structure.core.Column",
+          "liquibase.structure.core.ForeignKey",
+          "liquibase.structure.core.Index",
+          "liquibase.structure.core.PrimaryKey",
+          "liquibase.structure.core.Schema",
+          "liquibase.structure.core.Sequence",
+          "liquibase.structure.core.Table",
+          "liquibase.structure.core.UniqueConstraint",
+          "liquibase.structure.core.View"
+        ]
+        
+      }
+    }
+  }
+}
