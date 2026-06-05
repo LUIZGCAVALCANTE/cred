@@ -1,9 +1,7 @@
 package com.izvoc.cred.Controllers;
 
 import com.izvoc.cred.Dto.ClientDto;
-import com.izvoc.cred.Dto.CustomError;
 import com.izvoc.cred.Services.ClientService;
-import com.izvoc.cred.Services.execptions.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,49 +10,47 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
-import java.util.List;
-
 @RestController
 @RequestMapping("/clients")
 @Validated
-
 public class ClientController {
 
-
-
     @Autowired
-    ClientService clientService;
-    // insere novos
+    private ClientService clientService;
+
+    // Inserir cliente
     @PostMapping
-    public ClientDto InsertClient(@Valid  @RequestBody ClientDto clientDto) {
-
-        return this.clientService.InsertClient( clientDto );
-
-    }
-    // busca geral
-    @GetMapping("/all")
-    public ResponseEntity<Page<ClientDto>> getAllClients(Pageable pages) {
-        return  ResponseEntity.ok(this.clientService.getAllClients(pages));
-    }
-    //getid
-    @GetMapping("/buscar/{id}")
-    public ClientDto findByid(@PathVariable Long id) {
-
-        return this.clientService.findByid(id);
+    public ClientDto insert(@Valid @RequestBody ClientDto clientDto) {
+        return clientService.InsertClient(clientDto);
     }
 
-
-    // atualizar client
-    @PutMapping("/att/{id}")
-    public ClientDto UpdateClient(@RequestBody @Valid ClientDto clientDto,@PathVariable Long id) {
-        return this.clientService.UpdateClient(clientDto, id);
+    // Busca paginada
+    @GetMapping
+    public ResponseEntity<Page<ClientDto>> findAll(Pageable pageable) {
+        return ResponseEntity.ok(clientService.getAllClients(pageable));
     }
 
-    // deletar
-    @DeleteMapping("/del/{id}")
-    public void deleteClient(@PathVariable Long id) {
+    // Busca por ID
+    @GetMapping("/{id}")
+    public ClientDto findById(@PathVariable Long id) {
+        return clientService.findByid(id);
+    }
+
+    // Atualização
+    @PutMapping("/{id}")
+    public ClientDto update(
+            @PathVariable Long id,
+            @Valid @RequestBody ClientDto clientDto) {
+
+        return clientService.UpdateClient(clientDto, id);
+    }
+
+    // Deleção
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+
         clientService.deleteClient(id);
-    }
 
+        return ResponseEntity.noContent().build();
+    }
 }

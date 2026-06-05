@@ -3,6 +3,7 @@ package com.izvoc.cred.Entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -16,13 +17,15 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    @NotNull
+    @NotBlank(message = "Nome não pode ser vazio")
     private String name;
     @Column(nullable = false, unique = true)
     @NotBlank(message="Campo Obrigatório")
     @Size(min = 11, max = 11, message="Minimo de 11 caracteres")
-    private String CPF;
+    private String cpf;
     private Double income;
+    @PastOrPresent(message = "Data não pode ser futura")
+
     private LocalDate birthDate;
     private Integer children;
 
@@ -32,7 +35,7 @@ public class Client {
     public Client(Long id, String name, String CPF, Double income, Integer children, LocalDate birthDate) {
         this.id = id;
         this.name = name;
-        this.CPF = CPF;
+        this.cpf = CPF;
         this.income = income;
         this.children = children;
         this.birthDate = birthDate;
@@ -59,7 +62,7 @@ public class Client {
         return "Client{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", CPF='" + CPF + '\'' +
+                ", CPF='" + cpf + '\'' +
                 ", income=" + income +
                 ", birthDate=" + birthDate +
                 ", children=" + children +
@@ -80,11 +83,11 @@ public class Client {
     }
 
     public String getCPF() {
-        return CPF;
+        return cpf;
     }
 
     public void setCPF(String CPF) {
-        this.CPF = CPF;
+        this.cpf = CPF;
     }
 
     public Double getIncome() {

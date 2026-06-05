@@ -10,7 +10,7 @@ public record ClientDto(
         Long id, String name,
         @Size(min = 11, max = 11, message = "CPF deve ter 11 caracteres")
 
-        String CPF,
+        String cpf,
         Double income,
         @JsonFormat(pattern = "yyyy-MM-dd")
 

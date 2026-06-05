@@ -34,7 +34,7 @@ public class ClientService {
 
 
         client.setName(clientDto.name());
-        client.setCPF(clientDto.CPF());
+        client.setCPF(clientDto.cpf());
         client.setIncome(clientDto.income());
         client.setBirthDate(clientDto.birthDate());
         client.setChildren(clientDto.children());
@@ -96,7 +96,7 @@ public class ClientService {
 
         Client client = clientRepository.getReferenceById(id);
         client.setName(clientDto.name());
-        client.setCPF(clientDto.CPF());
+        client.setCPF(clientDto.cpf());
         client.setIncome(clientDto.income());
         client.setBirthDate(clientDto.birthDate());
         client.setChildren(clientDto.children());
